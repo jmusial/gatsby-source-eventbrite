@@ -15,7 +15,7 @@
     "gatsby-plugin-sharp": "^2.0.0-beta.7",
     "is-online": "^7.0.0",
     "json-stringify-safe": "^5.0.1",
-    "lodash": "^4.17.10",
+    "lodash": "^4.17.11",
     "qs": "^6.4.0",
     "semantic-release": "^15.9.13"
   },
