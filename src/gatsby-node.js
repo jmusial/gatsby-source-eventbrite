@@ -5,25 +5,32 @@ const { linkEventWithVenue } = require('./createNodeRelations')
 const processEntry = require('./processEntry')
 
 exports.sourceNodes = async (
-  { actions, getNode, store, cache, createNodeId },
+  { boundActionCreators, createNodeId },
   options
 ) => {
-  const { createNode } = actions
-  const { organizationId, accessToken, entities = [] } = options
+  const { createNode } = boundActionCreators
+  const { organizations, entities = [] } = options
 
   // Merge default entities with configured ones
   const entitiesToFetch = [...new Set([...defaultEntities, ...entities])]
 
   // Fetch all defined entities and create nodes
   const nodes = {}
+  let processedEntries = [];
 
-  const processedEntries = entitiesToFetch.map(entity => {
-    return fetch({ organizationId, accessToken, entity })
-      .then(entries =>
-        entries[entity].map(entry => processEntry(entry, entity, createNodeId))
-      )
-      .then(entries => (nodes[entity] = entries))
-  })
+  organizations.map(org => {
+    let tempEntries = entitiesToFetch.map(entity => {
+      return fetch({
+        organizationId: org.organizationId,
+        accessToken: org.accessToken,
+        entity
+      }).then(entries => entries[entity].map(entry => processEntry(entry, entity, createNodeId))).then(entries => {
+        nodes[entity] = [...(nodes[entity] || []), ...entries];
+      });
+    });
+    processedEntries = [...processedEntries, ...tempEntries];
+  });
+
 
   await Promise.all(processedEntries).then(() => {
     Object.keys(nodes).forEach(entity => {

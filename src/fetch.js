@@ -9,8 +9,6 @@ const httpExceptionHandler = require(`./http-exception-handler`)
  */
 async function fetch({ organizationId, accessToken, entity }) {
   console.log(`Fetch Eventbrite data for '${entity}' entity`)
-  // Fetch events from the user (paginated, 50 per page)
-  // TODO Implement other URI's
   try {
     return axios({
       method: `get`,
@@ -18,15 +16,15 @@ async function fetch({ organizationId, accessToken, entity }) {
         'User-Agent':
           'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.12; rv:51.0) Gecko/20100101 Firefox/51.0',
       },
-
       // Fetch events from the user (paginated, 50 per page)
       // TODO Implement other URI's
-      url: `https://www.eventbriteapi.com/v3/organizations/${organizationId}/${entity}?token=${accessToken}`,
+      // TODO Make query flags customizable
+      url: `https://www.eventbriteapi.com/v3/organizations/${organizationId}/${entity}?token=${accessToken}&time_filter=current_future`,
     }).then(res => res.data)
   } catch (e) {
     httpExceptionHandler(e)
   }
 
-  return result
+  return;
 }
 module.exports = fetch
