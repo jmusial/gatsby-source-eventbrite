@@ -1,5 +1,5 @@
 
-# @jmusial/gatsby-source-eventbrite
+# gatsby-source-eventbrite-multipleorgs
 
 ---
 
@@ -15,7 +15,7 @@ Works with Eventbrite's API v3.
 
 ## Install
 
-`npm install --save @jmusial/gatsby-source-eventbrite`
+`npm install --save gatsby-source-eventbrite-multipleorgs`
 
 ## How to use
 

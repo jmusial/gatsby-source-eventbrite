@@ -1,5 +1,5 @@
 {
-  "name": "@jmusial/gatsby-source-eventbrite",
+  "name": "gatsby-source-eventbrite-multipleorgs",
   "description": "Gatsby source plugin for integration of eventbrite events.",
   "version": "1.0.0",
   "author": "Luis Höfer <luis@superlumen.io> (gatsbycentral.com)",
