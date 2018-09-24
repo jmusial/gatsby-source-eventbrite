@@ -1,17 +1,21 @@
 
-# gatsby-source-eventbrite
+# gatsby-source-eventbrite-multipleorgs
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/GatsbyCentral/gatsby-source-eventbrite.svg)](https://greenkeeper.io/)
-[![Build Status](https://travis-ci.org/GatsbyCentral/gatsby-source-eventbrite.svg?branch=master)](https://travis-ci.org/GatsbyCentral/gatsby-source-eventbrite)
+---
+
+This is a fork of [gatsby-source-eventbrite](https://github.com/GatsbyCentral/gatsby-source-eventbrite) made to support multiple evetbrite accounts and support for gatsby v1.9
+
+----
 
 Source plugin for pulling events and related data from eventbrite. 
 
 WORK IN PROGRESS: At the moment it just fetches `events` and `venues` from eventbrite.com without further processing or filtering. Other Endpoints are configurable but haven't been tested yet.
 Works with Eventbrite's API v3.
 
+
 ## Install
 
-`npm install --save gatsby-source-eventbrite`
+`npm install --save gatsby-source-eventbrite-multipleorgs`
 
 ## How to use
 
@@ -19,10 +23,19 @@ Works with Eventbrite's API v3.
 // In your gatsby-config.js
 plugins: [
   {
-    resolve: `gatsby-source-eventbrite`,
+    resolve: `@jmusial/gatsby-source-eventbrite`,
     options: {
-      organizationId: `The ID of your organization`,
-      accessToken: `your_access_token`,
+      organizations: {
+        [     
+          organizationId: `The ID of your organization 1`,
+          accessToken: `your_access_token 1`,
+        ],
+        [     
+          organizationId: `The ID of your organization 2`,
+          accessToken: `your_access_token 2`,
+        ],
+        ...
+      }
       // OPTIONAL: Defaults are Events and Venues
       entities: ['events', 'venues','...']
     },
