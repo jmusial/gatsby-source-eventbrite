@@ -1,7 +1,7 @@
 {
   "name": "gatsby-source-eventbrite-multipleorgs",
   "description": "Gatsby source plugin for integration of eventbrite events.",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "author": "Luis Höfer <luis@superlumen.io> (gatsbycentral.com)",
   "bugs": {
     "url": "https://github.com/jmusial/gatsby-source-eventbrite/issues"
