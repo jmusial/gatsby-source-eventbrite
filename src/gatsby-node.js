@@ -4,6 +4,7 @@ const { defaultEntities } = require('./defaultEntities')
 const { linkEventWithVenue } = require('./createNodeRelations')
 const processEntry = require('./processEntry')
 
+// @TODO add image processing
 exports.sourceNodes = async (
   { boundActionCreators, createNodeId },
   options
