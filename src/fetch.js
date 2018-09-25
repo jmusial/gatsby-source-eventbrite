@@ -18,8 +18,7 @@ async function fetch({ organizationId, accessToken, entity }) {
       },
       // Fetch events from the user (paginated, 50 per page)
       // TODO Implement other URI's
-      // TODO Make query flags customizable
-      url: `https://www.eventbriteapi.com/v3/organizations/${organizationId}/${entity}?token=${accessToken}&time_filter=current_future`,
+      url: `https://www.eventbriteapi.com/v3/organizations/${organizationId}/${entity}?token=${accessToken}`,
     }).then(res => res.data)
   } catch (e) {
     httpExceptionHandler(e)
